@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    ECR_REPO = "131464424269.dkr.ecr.us-east-1.amazonaws.com/devops-app:latest"
+    ECR_REPO = "131464424269.dkr.ecr.us-east-1.amazonaws.com/devops-app"
     IMAGE_TAG = "latest"
   }
 
