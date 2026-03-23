@@ -13,6 +13,19 @@ pipeline {
         git branch: 'main', url: 'https://github.com/pavankumar90554/project.git'
       }
     }
+    stage('SonarQube Analysis') {
+      steps {
+        withSonarQubeEnv('sonarqube') {
+          sh '''
+          sonar-scanner \
+          -Dsonar.projectKey=devops-apps \
+          -Dsonar.sources=. \
+          -Dsonar.host.url=http://54.160.158.29:9000 \
+          -Dsonar.login=squ_8975aef1041939a28f249949789dd9996bda176f
+          '''
+        }
+      }
+    }
 
     stage('Build Docker Image') {
       steps {
