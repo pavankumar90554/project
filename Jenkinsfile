@@ -17,16 +17,16 @@ pipeline {
       steps {
         withSonarQubeEnv('sonarqube') {
           sh '''
-          sonar-scanner \
+          /opt/sonar-scanner/bin/sonar-scanner \
           -Dsonar.projectKey=devops-apps \
           -Dsonar.sources=. \
           -Dsonar.host.url=http://54.160.158.29:9000 \
           -Dsonar.login=squ_8975aef1041939a28f249949789dd9996bda176f
+
           '''
         }
       }
     }
-
     stage('Build Docker Image') {
       steps {
         sh 'docker build -t devops-app .'
